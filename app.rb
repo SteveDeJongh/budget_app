@@ -100,3 +100,9 @@ end
 post '/deleteexpense/:id' do
   # to do...
 end
+
+get '/reports' do
+  @data = @storage.group_by('category')
+  # binding.pry
+  erb :report, layout: :layout  
+end

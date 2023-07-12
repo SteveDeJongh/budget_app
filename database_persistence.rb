@@ -66,5 +66,15 @@ class Databasepersistence
       amount: tuple["amount"] }
   end
 
+  def group_by(selector)
+    sql = <<~SQL 
+      SELECT #{selector}, sum(amount) FROM expenses
+      GROUP BY #{selector}
+      ORDER BY #{selector} ASC;
+    SQL
+
+    query(sql)
+  end
+
 
 end
