@@ -3,10 +3,18 @@
   <head>
     <title>Expense App</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans">
+    <link rel="stylesheet" href="/stylesheets/whitespace-reset.css">
+    <link rel="stylesheet" href="/stylesheets/application.css">
   </head>
   <body>
     <header>
       <h1>Expense Tracker</h1>
+      <div class="actions">
+        <a href='/'>Home</a>
+        <a href="/addexpense">Add Expense</a>
+        <a href="/expenses">View Expenses</a>
+      </div>
     </header>
 
     <% if session[:succes]%>

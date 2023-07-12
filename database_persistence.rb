@@ -1,6 +1,7 @@
 # database_persistence.rb
 
 require 'pg'
+require 'pry'
 
 class Databasepersistence
   def initialize
@@ -39,7 +40,7 @@ class Databasepersistence
   def tuple_to_expense_hash(tuple)
     { id: tuple["id"].to_i,
       payee: tuple["payee"],
-      category: tuple["cagtegory"],
+      category: tuple["category"],
       date: tuple["created_on"],
       amount: tuple["amount"] }
   end

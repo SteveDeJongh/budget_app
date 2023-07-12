@@ -11,6 +11,7 @@ end
 
 configure(:development) do
   require 'sinatra/reloader'
+  also_reload 'database_persistence.rb'
 end
 
 require_relative "database_persistence"
@@ -27,7 +28,6 @@ end
 get '/' do
   @expenses = @storage.all_expenses
   erb :home, layout: :layout
-  # binding.pry
 end
 
 post '/addexpense' do
@@ -35,4 +35,13 @@ post '/addexpense' do
   @storage.addexpense(@data[0], @data[1], @data[2], @data[3])
   session[:success] = 'Transaction has been added.'
   redirect '/'  
+end
+
+get '/expenses' do
+  @expenses = @storage.all_expenses
+  erb :expenses, layout: :layout
+end
+
+get '/addexpense' do
+  erb :addexpense, layout: :layout
 end

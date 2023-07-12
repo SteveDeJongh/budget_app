@@ -24,23 +24,3 @@
       <button type="submit">Add Expense</button>
     </div>
   </form>
-
-<h3>Current expenses:</h3>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Payee</th>
-    <th>Category</th>
-    <th>Date</th>
-    <th>Amount</th>
-  </tr>
-  <% @expenses.each do |expense| %>
-    <tr>
-      <td><%= expense[:id]%></td>
-      <td><%= expense[:payee]%></td>
-      <td><%= expense[:category]%></td>
-      <td><%= expense[:date]%></td>
-      <td><%= expense[:amount]%></td>
-    </tr>
-  <% end %>
-</table>
