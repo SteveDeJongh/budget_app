@@ -1,0 +1,19 @@
+<h3>Current <%= @expense[:payee] %></h3>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Payee</th>
+    <th>Category</th>
+    <th>Date</th>
+    <th>Amount</th>
+  </tr>
+    <tr>
+      <td><%= @expense[:id]%></td>
+      <td><%= @expense[:payee]%></td>
+      <td><%= @expense[:category]%></td>
+      <td><%= @expense[:date]%></td>
+      <td><%= @expense[:amount]%></td>
+      <td><a href="/editexpense/<%= @expense[:id] %>">Edit</a></td>
+      <td><a href="/deleteexpense/<%= @expense[:id] %>">Delete</a></td>
+    </tr>
+</table>

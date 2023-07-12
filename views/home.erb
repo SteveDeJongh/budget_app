@@ -36,7 +36,7 @@
   </tr>
   <% @expenses.each do |expense| %>
     <tr>
-      <td><%= expense[:id]%></td>
+      <td><a href="/expense/<%= expense[:id]%>"><%= expense[:id]%></a></td>
       <td><%= expense[:payee]%></td>
       <td><%= expense[:category]%></td>
       <td><%= expense[:date]%></td>

@@ -1,0 +1,26 @@
+<h3>Editing <%= @expense[:name] %>:</h3>
+  <form action="/editexpense/<%= @expense[:id] %>" method="post">
+    <div>
+      <label for="payee">Payee:
+        <input name="payee" id="payee" placeholder="<%= @expense[:payee] %>">
+      </label>
+    </div>
+    <div>
+      <label for="category">Category:
+        <input name="category" id="category" placeholder="<%= @expense[:category] %>">
+      </label>
+    </div>
+    <div>
+      <label for="date">Date:
+        <input name="date" id="date" placeholder="<%= @expense[:date] %>">
+      </label>
+    </div>
+    <div>
+      <label for="amount">Amount:
+        <input name="amount" id="amount" placeholder="<%= @expense[:amount] %>">
+      </label>
+    </div>
+    <div>
+      <button type="submit">Edit Expense</button>
+    </div>
+  </form>
