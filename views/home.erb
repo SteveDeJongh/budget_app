@@ -1,0 +1,46 @@
+<h3>Add a new expense:</h3>
+  <form action="/addexpense" method="post">
+    <div>
+      <label for="payee">Payee:
+        <input name="payee" id="payee">
+      </label>
+    </div>
+    <div>
+      <label for="category">Category:
+        <input name="category" id="category">
+      </label>
+    </div>
+    <div>
+      <label for="date">Date:
+        <input name="date" id="date">
+      </label>
+    </div>
+    <div>
+      <label for="amount">Amount:
+        <input name="amount" id="amount">
+      </label>
+    </div>
+    <div>
+      <button type="submit">Add Expense</button>
+    </div>
+  </form>
+
+<h3>Current expenses:</h3>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Payee<th>
+    <th>Category<th>
+    <th>Date</th>
+    <th>Amount<th>
+  </tr>
+  <% @expenses.each do |expense| %>
+    <tr>
+      <th><%= expense["id"]%><th>
+      <th><%= expense["payee"]%><th>
+      <th><%= expense["category"]%><th>
+      <th><%= expense["created_on"]%><th>
+      <th><%= expense["amount"]%></th>
+    <tr>
+  <% end %>
+</table>
