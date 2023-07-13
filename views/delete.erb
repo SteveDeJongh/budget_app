@@ -1,4 +1,4 @@
-<h3>Viewing expense: <%= @expense[:payee] %></h3>
+<h3>Delete this expense? <%= @expense[:payee] %></h3>
 <table>
   <tr>
     <th>ID</th>
@@ -17,3 +17,7 @@
       <td><a href="/editexpense/<%= @expense[:id] %>/delete">Delete</a></td>
     </tr>
 </table>
+
+<form action='/editexpense/<%= @expense[:id] %>/delete' method='post'%>
+  <button type='submit'>Delete!</button>
+</form>

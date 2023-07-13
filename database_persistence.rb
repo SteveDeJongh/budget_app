@@ -63,7 +63,7 @@ class Databasepersistence
       payee: tuple["payee"],
       category: tuple["category"],
       date: tuple["created_on"],
-      amount: tuple["amount"] }
+      amount: tuple["amount"].to_i }
   end
 
   def group_by(selector)
@@ -83,5 +83,11 @@ class Databasepersistence
     query(sql)
   end
 
+  def delete_expense(id)
+    sql = <<~SQL
+    DELETE FROM expenses WHERE ID = $1
+    SQL
 
+    query(sql, id.to_i)
+  end
 end

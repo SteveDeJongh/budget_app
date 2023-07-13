@@ -98,8 +98,16 @@ post '/editexpense/:id' do
   end
 end
 
-post '/deleteexpense/:id' do
-  # to do...
+get '/editexpense/:id/delete' do
+  @expense = find_expense(params[:id])
+  erb :delete, layout: :layout
+end
+
+post '/editexpense/:id/delete' do
+  @expense = find_expense(params[:id])
+  @storage.delete_expense(params[:id])
+  session[:success] = "#{@expense[:payee]} has been deleted."
+  redirect '/'
 end
 
 get '/viewreports' do
