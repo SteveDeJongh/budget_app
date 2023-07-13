@@ -19,6 +19,7 @@ require_relative "expense"
 
 before do
   @storage = Databasepersistence.new
+  @sorting_categories = ['Payee', 'Category', 'Month', 'Year']
 end
 
 after do
@@ -49,7 +50,6 @@ end
 
 get '/' do
   @expenses = @storage.all_expenses
-  @categories = @storage.categories
   erb :home, layout: :layout
 end
 
@@ -111,12 +111,22 @@ post '/editexpense/:id/delete' do
 end
 
 get '/viewreports' do
-  @grouping = params[:cat]
-  @data = @storage.group_by(params[:cat])
+  @param = params[:cat]
+  @data = @storage.group_expenses_by(grouping_query(@param))
+  binding.pry
   erb :report, layout: :layout
 end
 
 get '/reports' do
   @data = @storage.group_by('category')
   erb :report, layout: :layout  
+end
+
+def grouping_query(param)
+  case param
+  when 'Payee' then 'payee'
+  when 'Category' then 'category'
+  when 'Month' then "TO_CHAR(created_on, 'Month')"
+  when 'Year' then "EXTRACT('YEAR' FROM created_on)"
+  end
 end

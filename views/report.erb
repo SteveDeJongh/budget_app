@@ -1,12 +1,12 @@
-<h3>Viewing expenses grouped by <%= @grouping %>:</h3>
+<h3>Viewing expenses grouped by <%= @param %>:</h3>
 <table>
   <tr>
-    <th><%= @grouping %></th>
+    <th><%= @param %></th>
     <th>Total Amount</th>
   </tr>
   <% @data.each do |row| %>
     <tr>
-      <td><%= row[@grouping.downcase]%></td>
+      <td><%= row[@param.downcase]%></td>
       <td><%= row["sum"]%></td>
     </tr>
   <% end %>

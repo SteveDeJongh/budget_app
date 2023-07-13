@@ -50,9 +50,9 @@
   <div>
     <label for="cat">Group expenses by:</label>
       <select name="cat" id="cat">
-        <option value="Payee">Payee</option>
-        <option value="Category">Category</option>
-        <option value="Date">Date</option>
+        <% @sorting_categories.each do |cat| %>
+          <option value="<%= cat %>"><%= cat %></option>
+        <% end %>
       </select>
     <button type="submit">Go!</button>
   </div>

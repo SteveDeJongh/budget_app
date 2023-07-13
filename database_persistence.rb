@@ -66,21 +66,13 @@ class Databasepersistence
       amount: tuple["amount"].to_i }
   end
 
-  def group_by(selector)
+  def group_expenses_by(column)
     sql = <<~SQL 
-      SELECT #{selector}, sum(amount) FROM expenses
-      GROUP BY #{selector}
-      ORDER BY #{selector} ASC;
+      SELECT category, sum(amount) FROM expenses
+      GROUP BY category
+      ORDER BY category ASC;
     SQL
-    query(sql)
-  end
-
-  def categories
-    sql = <<~SQL
-    SELECT DISTINCT(category) FROM expenses;
-    SQL
-
-    query(sql)
+    result = query(sql)
   end
 
   def delete_expense(id)
