@@ -6,7 +6,7 @@
   </tr>
   <% @data.each do |row| %>
     <tr>
-      <td><%= row[@param.downcase]%></td>
+      <td><%= row.values[0] %></td>
       <td><%= row["sum"]%></td>
     </tr>
   <% end %>
