@@ -66,11 +66,38 @@ class Databasepersistence
       amount: tuple["amount"].to_i }
   end
 
-  def group_expenses_by(column)
+  def group_expenses_by_category
     sql = <<~SQL 
       SELECT category, sum(amount) FROM expenses
       GROUP BY category
       ORDER BY category ASC;
+    SQL
+    result = query(sql)
+  end
+
+  def group_expenses_by_payee
+    sql = <<~SQL 
+      SELECT payee, sum(amount) FROM expenses
+      GROUP BY payee
+      ORDER BY payee ASC;
+    SQL
+    result = query(sql)
+  end
+
+  def group_expenses_by_month
+    sql = <<~SQL 
+      SELECT TO_CHAR(created_on, 'Month') AS Month, sum(amount) FROM expenses
+      GROUP BY Month
+      ORDER BY Month ASC;
+    SQL
+    result = query(sql)
+  end
+
+  def group_expenses_by_year
+    sql = <<~SQL 
+      SELECT EXTRACT('YEAR' FROM created_on) AS Year, sum(amount) FROM expenses
+      GROUP BY Year
+      ORDER BY Year ASC;
     SQL
     result = query(sql)
   end

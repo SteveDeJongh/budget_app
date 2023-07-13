@@ -112,8 +112,12 @@ end
 
 get '/viewreports' do
   @param = params[:cat]
-  @data = @storage.group_expenses_by(grouping_query(@param))
-  binding.pry
+  @data = case @param
+            when "Payee" then @storage.group_expenses_by_payee
+            when "Category" then @storage.group_expenses_by_category
+            when "Month" then @storage.group_expenses_by_month
+            when "Year" then @storage.group_expenses_by_year
+          end
   erb :report, layout: :layout
 end
 
