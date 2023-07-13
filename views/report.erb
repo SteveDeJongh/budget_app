@@ -1,13 +1,13 @@
-<h3>Viewing expenses grouped by category:</h3>
+<h3>Viewing expenses grouped by <%= @grouping %>:</h3>
 <table>
   <tr>
-    <th>Category</th>
+    <th><%= @grouping %></th>
     <th>Total Amount</th>
   </tr>
-  <% @data.each do |category| %>
+  <% @data.each do |row| %>
     <tr>
-      <td><%= category["category"]%></td>
-      <td><%= category["sum"]%></td>
+      <td><%= row[@grouping.downcase]%></td>
+      <td><%= row["sum"]%></td>
     </tr>
   <% end %>
 </table>

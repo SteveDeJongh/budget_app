@@ -72,6 +72,13 @@ class Databasepersistence
       GROUP BY #{selector}
       ORDER BY #{selector} ASC;
     SQL
+    query(sql)
+  end
+
+  def categories
+    sql = <<~SQL
+    SELECT DISTINCT(category) FROM expenses;
+    SQL
 
     query(sql)
   end

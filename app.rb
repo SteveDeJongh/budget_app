@@ -49,6 +49,7 @@ end
 
 get '/' do
   @expenses = @storage.all_expenses
+  @categories = @storage.categories
   erb :home, layout: :layout
 end
 
@@ -101,8 +102,13 @@ post '/deleteexpense/:id' do
   # to do...
 end
 
+get '/viewreports' do
+  @grouping = params[:cat]
+  @data = @storage.group_by(params[:cat])
+  erb :report, layout: :layout
+end
+
 get '/reports' do
   @data = @storage.group_by('category')
-  # binding.pry
   erb :report, layout: :layout  
 end

@@ -44,3 +44,16 @@
     </tr>
   <% end %>
 </table>
+
+<h3>Reporting</h3>
+<form action="/viewreports" method="get">
+  <div>
+    <label for="cat">Group expenses by:</label>
+      <select name="cat" id="cat">
+        <option value="Payee">Payee</option>
+        <option value="Category">Category</option>
+        <option value="Date">Date</option>
+      </select>
+    <button type="submit">Go!</button>
+  </div>
+</form>
